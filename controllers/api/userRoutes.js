@@ -4,7 +4,7 @@ const { User } = require('../../models');
 //generic route to home page
 router.post('/', async (req, res) => {
   try {
-    const userData = await User.create(req.body); //create instance of User model and add it's values to userData
+    const userData = await User.create(req.body);
 
     req.session.save(() => {  //create a new session with the user's id and setting their logged-in status to true
       req.session.user_id = userData.id;
@@ -16,33 +16,9 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
-  try {
-    const userData = await User.create(req.body);
-
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
-
-      res.status(200).json(userData);
-    });
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
-
-
-
-
-
-
-
-
-//---------- POST Routes ----------//
-//log user in
 router.post ('/login', async (req, res) => {
   try {
-    const userData = await User.findOne({where: {email:req.body.email}});
+    const userData = await User.findOne({where: {email:req. body.email}});
     if (!userData) {
       res.status(400).json({message: 'Incorrect username or password.'});
       return;
@@ -50,7 +26,8 @@ router.post ('/login', async (req, res) => {
 
     const validPassword = await userData.checkPassword(req.body.password);
     if (!validPassword) {
-      res.status(400).json({message: 'Incorrect username or password.'})
+      res.status(400).json({message: 'Incorrect username or password.'});
+      return;
     }
 
     req.session.save(() => {
@@ -64,7 +41,6 @@ router.post ('/login', async (req, res) => {
   }
 });
 
-//log user out
 router.post ('/logout', async (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
