@@ -3,30 +3,30 @@
         "user_id": 5,
         "post_id": 1,
         "date_created": "08/22/2024",
-        "content": "What a great article! I'm rust as we speak!"
+        "text": "What a great article! I'm rust as we speak!"
     },
     {
         "user_id": 3,
         "post_id": 2,
         "date_created": "06/11/2024",
-        "content": "A timely topic. Do you prefer async/await or .then statements?"
+        "text": "A timely topic. Do you prefer async/await or .then statements?"
     },
     {
         "user_id": 1,
         "post_id": 3,
         "date_created": "06/14/2024",
-        "content": "I'm planning to look into Python after I finish my web-development class."
+        "text": "I'm planning to look into Python after I finish my web-development class."
     },
     {
         "user_id": 2,
         "post_id": 4,
         "date_created": "01/01/2023",
-        "content": "God I hate GIT!"
+        "text": "God I hate GIT!"
     },
     {
         "user_id": 4,
         "post_id": 5,
         "date_created": "07/31/2024",
-        "content": "TDD is a hoax!"
+        "text": "TDD is a hoax!"
     }
 ]

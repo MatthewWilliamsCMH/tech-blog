@@ -8,7 +8,21 @@ router.post('/', async (req, res) => {
 
     req.session.save(() => {  //create a new session with the user's id and setting their logged-in status to true
       req.session.user_id = userData.id;
-      req.session.logged_in = true; //not sure why we're setting their logged-in status to true here; they haven't logged in.
+      req.session.logged_in = true;
+      res.status(200).json(userData);
+    });
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+router.post('/', async (req, res) => {
+  try {
+    const userData = await User.create(req.body);
+
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
 
       res.status(200).json(userData);
     });
@@ -16,6 +30,13 @@ router.post('/', async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+
+
+
+
+
+
 
 //---------- POST Routes ----------//
 //log user in
@@ -39,7 +60,7 @@ router.post ('/login', async (req, res) => {
     });
   }
   catch (err) {
-    res.status(400).json({message: 'Error logging in.', error: err.message})
+    res.status(400).json({message: 'Unable to log you in.', error: err.message})
   }
 });
 

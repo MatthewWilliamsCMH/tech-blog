@@ -1,22 +1,27 @@
 [
   {
-    "username": "Matthew",
+    "name": "Matthew",
+    "email": "matthewwilliamscmh@icloud.com",
     "password": "2468013579"
   },
   {
-    "username": "Kelly",
+    "name": "Kelly",
+    "email": "ekbrown@gmail.com",
     "password": "2468013579"
   },
   {
-    "username": "Ralph",
+    "name": "Ralph",
+    "email": "rtwilliams@aol.com",
     "password": "2468013579"
   },
   {
-    "username": "Jeff",
-    "password": "02468013579"
+    "name": "Jeff",
+    "email": "jtw@microsoft.com",
+    "password": "2468013579"
   },
   {
-    "username": "Marty",
+    "name": "Marty",
+    "email": "mebw36@aol.com",
     "password": "2468013579"
   }
 ]

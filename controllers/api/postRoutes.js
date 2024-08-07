@@ -11,25 +11,27 @@ router.post('/', withAuth, async (req, res) => {
     res.status(200).json(newPost);
   }
   catch (err) {
-    res.status(400).json({message: 'Error adding blog post', error: err.message})
+    res.status(400).json({message: 'Unable to add the blog post', error: err.message})
   }
 });
 
 router.delete ('/:id', withAuth, async (req, res) => {
   try {
-    const postData = await Post.destroy()({
+    const postData = await Post.destroy({
       where: {
         id: req.params.id,
         user_id: req.session.user_id
       }
     });
     if (!postData) {
-      res.status(404).json({message: 'Blog post not found.'})
+      res.status(404).json({message: 'Unable to locate the blog post.'})
       return;
     }
+    res.status(200).json(postData);
   }
+
   catch (err) {
-    res.status(500).json({message: 'Error deleting blog post.', error: err.message})
+    res.status(500).json({message: 'Unable to delete the blog post.', error: err.message})
   }
 });
 

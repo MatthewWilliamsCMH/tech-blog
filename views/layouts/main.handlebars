@@ -6,23 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tech Blog</title>
   <link rel="stylesheet" href="/css/jass.css">
-  {{!-- <link rel="stylesheet" href="/css/style.css"> --}}
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
   <div class="flex-column justify-space-around">
     <header class="display-flex justify-space-between align-center p-2">
       <h1>
-        {{!-- <span role="img" aria-label="money">💸</span> --}}
         <a href="/">Tech Blog</a>
       </h1>
       <nav>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-          <a href="/profile">profile</a> |
-          <button class="no-button" id="logout">logout</button>
+          <a href="/dashboard">DASHBOARD</a>&emsp;|&emsp;<button class="no-button" id="logout">LOGOUT</button>
         {{else}}
-          <a href="/login">login</a>
+          <a href="/">HOME</a>&emsp;|&emsp;<a href="/dashboard">DASHBOARD</a>&emsp;|&emsp;<a href="/login">LOGIN</a>
         {{/if}}
       </nav>
     </header>

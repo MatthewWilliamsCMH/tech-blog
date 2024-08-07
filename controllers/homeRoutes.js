@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
       include: [
         {
           model: User,
-          attributes: ['username']
+          attributes: ['name']
         }
       ]
     });
@@ -21,17 +21,17 @@ router.get('/', async (req, res) => {
     });
   }
   catch (err) {
-    return res.status(500).json({message: 'Error getting blog posts.', error: err.message});
+    return res.status(500).json({message: 'Unable to get the blog posts.', error: err.message});
   }
 });
 
 router.get('/post/:id', async (req, res) => {
   try {
-    const postData = await post.findByPk(req.params.id, {
+    const postData = await Post.findByPk(req.params.id, {
       include: [
         {
           model: User,
-          attributes: ['username']
+          attributes: ['name']
         }
       ]
     });
@@ -46,15 +46,15 @@ router.get('/post/:id', async (req, res) => {
   }
 });
 
-router.get('/profile', withAuth, async (req, res) => {
+router.get('/dashboard', withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id, { //this uses the session ID to identify the logged-in user.
       attributes: { exclude: ['password'] },
-      include: [{ model: Project }],
+      include: [{ model: Post }],
     });
 
     const user = userData.get({ plain: true });
-    res.render('profile', {
+    res.render('dashboard', {
       ...user,
       logged_in: true
     });
@@ -66,7 +66,7 @@ router.get('/profile', withAuth, async (req, res) => {
 
 router.get('/login', (req, res) => {
   if (req.session.logged_in) { //checks to see if the user is already logged in. If so, they're routed to posts
-    res.redirect('/posts');
+    res.redirect('/dashboard');
     return;
   }
   res.render('login');
