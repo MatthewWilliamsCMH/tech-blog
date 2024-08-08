@@ -13,7 +13,6 @@ router.get('/:id', async (req, res) => {
         User
       ]
     });
-
     if (!post) {
       res.status(404).json({message: 'Unable to locate the post.'});
       return;
