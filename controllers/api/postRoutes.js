@@ -1,6 +1,48 @@
 const router = require('express').Router();
-const { Post } = require('../../models');
+const { Post, Comment, User } = require('../../models');
 const withAuth = require('../../utils/auth');
+
+router.get('/:id', async (req, res) => {
+  try {
+    const post = await Post.findByPk(req.params.id, {
+      include: [
+        {
+          model: Comment,
+          include: [User],
+        },
+        User
+      ]
+    });
+
+    if (!post) {
+      res.status(404).json({message: 'Unable to locate the post.'});
+      return;
+    }
+    const comments = post.Comments.map(comment => comment.get({plain: true}));
+    res.render('post', {
+      post: post.get({plain: true}),
+      comments: comments,
+      logged_in: req.session.logged_in
+    });
+  } 
+  catch (err) {
+    res.status(500).json({message: 'Unable to retreive the post.', error: err.message});
+  }
+});
+
+// Create a new comment
+router.post('/:id/comment', withAuth, async (req, res) => {
+  try {
+    const newComment = await Comment.create({
+      content: req.body.content,
+      postId: req.params.id,
+      userId: req.session.user_id
+    });
+    res.redirect(`/post/${req.params.id}`);
+  } catch (err) {
+    res.status(500).json({ message: 'Unable to add the comment.', error: err.message });
+  }
+});
 
 router.post('/', withAuth, async (req, res) => {
   try {

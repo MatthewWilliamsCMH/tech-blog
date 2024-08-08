@@ -1,0 +1,8 @@
+  <h4>Past Comments</h4>
+  <section class='flex-row justify-center'>
+    {{#each comments as |comment|}}
+      <div class='comment'>
+        <p><strong>{{comment.user_id.name}}</strong>: {{comment.text}}</p>
+      </div>
+    {{/each}}
+  </section>
