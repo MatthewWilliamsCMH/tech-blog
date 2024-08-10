@@ -1,9 +1,8 @@
-const newCommentHandler = async (event) => {
+const addCmtHandler = async (event) => {
   event.preventDefault();
 
   const text = document.querySelector('#comment-text').value.trim();
-  const post_id = document.querySelector('#post-id').value;
-
+  const post_id = event.target.getAttribute('data-id');
   if (text && post_id) {
     const response = await fetch(`/api/comments`, {
       method: 'POST',
@@ -12,7 +11,6 @@ const newCommentHandler = async (event) => {
         'Content-Type': 'application/json',
       },
     });
-    console.log(response)
     if (response.ok) {
       document.location.reload();
     } else {
@@ -23,4 +21,4 @@ const newCommentHandler = async (event) => {
 
 document
   .querySelector('.new-comment-form')
-  .addEventListener('submit', newCommentHandler);
+  .addEventListener('submit', addCmtHandler);
