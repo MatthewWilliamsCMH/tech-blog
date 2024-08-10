@@ -53,11 +53,12 @@ router.get('/post/:id', async (req, res) => {
       ...comment,
       commenterName: comment.commenter ? comment.commenter.name : 'Unknown'
     }));
-
+    const thisUser = req.session.user_id
     //and render the post
     res.render('post', {
       post,
       comments,
+      thisUser,
       logged_in: req.session.logged_in
     });
   } 
@@ -69,7 +70,7 @@ router.get('/post/:id', async (req, res) => {
 //get user's dashboard
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
-    const userData = await User.findByPk(req.session.user_id, { //use the session ID to identify the logged-in user
+    const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
       include: [{ model: Post }],
     });
