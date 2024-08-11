@@ -3,8 +3,10 @@
   <p>Posted by {{post.user.name}} on {{format_date post.date_created}}</p>
   <p>{{post.text}}</p>
   {{#if (eq thisUser post.user_id)}}
-    <button class='btn btn-sm btn-danger' data-id='{{post.id}}' id='updPstBtn'>Update</button>
+    {{!-- <button class='btn btn-sm btn-danger' data-id='{{post.id}}' id='loadUpdPage'>Update</button> --}}
     <button class='btn btn-sm btn-danger' data-id='{{post.id}}' id='delPstBtn'>Delete</button>
+  {{else}}
+    <button class='btn btn-sm btn-danger' data-id='{{post.id}}' id='delPstBtn' style='visibility: hidden;'>Delete</button>
   {{/if}}
 </div>
 {{#if logged_in}}

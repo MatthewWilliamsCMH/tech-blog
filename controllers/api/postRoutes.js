@@ -1,8 +1,9 @@
 const router = require('express').Router();
-const { Post, Comment } = require('../../models');
+const { text } = require('express');
+const { Post } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-//post new blog post
+//post a new blog post
 router.post('/', withAuth, async (req, res) => {
   try {
     const newPost = await Post.create({
@@ -13,6 +14,37 @@ router.post('/', withAuth, async (req, res) => {
   }
   catch (err) {
     res.status(400).json({message: 'Unable to add the blog post', error: err.message})
+  }
+});
+
+//update a post
+router.get('/update', withAuth, (req, res) => {
+  res.render('update')
+})
+
+router.put('/:id', withAuth, async (req, res) => {
+  try {
+    const [newPost] = await Post.update({
+      title: req.body.title,
+      text: req.body.text
+    },
+    {
+      where: {
+        id: req.params.id,
+        // user_id: req.session.user_id
+      }
+    });
+      
+    if (newPost) {
+      const updatePost = await Post.findByPk(req.params.id);
+      res.status(200).json(updatePost);
+    }
+    else {
+      res.status(404).json({message: 'Unable to find the post to update.', error: err.message});
+    }
+  }
+  catch (err) {
+    res.status(400).json({message: 'Unable to update the blog post', error: err.message})
   }
 });
 
