@@ -5,7 +5,9 @@
 MIT License
 
 ## Description
-Tech Blog is a full-stack application that allows users to write blog posts, update them (see [Future Development](#future-development)), and delete them. It also allows users to add comments to their own blog posts or those written by others and to review comments.
+Tech Blog is a full-stack application that allows users to write blog posts, update them (see [Future Development](#future-development)), and delete them. It also allows users to add comments to their own blog posts or those written by others and to review comments. The user dashboard page for the app can be seen in the screen shot below.
+
+![image of dashboard page for the Tech Blog app](./assets/tech-blog.jpg)
 
 ## Table of Contents
 - [Installation](#installation)
@@ -42,10 +44,10 @@ Without logging in, you can read the posts by clicking on their titles. To add p
 After five minutes of inactivity, you will be logged out.
 
 ## Future Development
-    - The update function is not working, so it's been disabled entirely for this build.
-    - The user experience meets the requirements of the brief, but it deviates slightly in some places. It should be modified to meet entirely the requirements of the brief. (This is largely a function of the boilerplate interface and should be addressed after the code is refactored and the design updated.)
-    - The code needs to be refactored for efficiency and more logical modularization.
-    - The interface is boilerplate and should be updated.
+- The update function is not working, so it's been disabled entirely for this build.
+- The user experience meets the requirements of the brief, but it deviates slightly in some places. It should be modified to meet entirely the requirements of the brief. (This is largely a function of the boilerplate interface and should be addressed after the code is refactored and the design updated.)
+- The code needs to be refactored for efficiency and more logical modularization.
+- The interface is boilerplate and should be updated.
 
 ## Contributing
 To contribute to Tech Blog, clone this repository locally and commit your code to a separate branch.

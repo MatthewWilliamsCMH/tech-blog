@@ -38,6 +38,7 @@ const delPstHandler = async (event) => {
   }
 };
 
+//This functionality has been entirely disabled until I can get it working correctly.
 //load post data for updating
 // const loadUpdPage = async (event) => {
 //   event.preventDefault();
@@ -115,6 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+//Part of the disabled update function.
 // document
 //   .querySelector('.update-post')
 //   .addEventListener('submit', updPstHandler);
