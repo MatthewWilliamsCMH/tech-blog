@@ -39,6 +39,8 @@ In your browser, navigate to [https://tech-blog-tg0i.onrender.com](https://tech-
 
 Without logging in, you can read the posts by clicking on their titles. To add posts, delete your posts, and add comments to your own and others' posts, you must login. Click either the Dashboard or Login link to be taken to the login page. You will be prompted to provide your credentials or, if you are not already a registered user, to sign up. After logging in or signing up, you will be taken to your dashboard, which lists all the posts you have made and provides a form for you to create new posts. Once posted, your dashboard will reload, and your new post will be added to the list of your existing posts. When you select one of your posts, you will be given the opportunity to delete the post. You cannot delete others' posts. To return to the list of all available posts, click the Home link. When you choose a post to read, you will have the opportunity to add a comment and also to read previous comments by other users. When you add a comment to a post, the page will reload, and you'll see your comment in the list of comments.
 
+After five minutes of inactivity, you will be logged out.
+
 ## Future Development
     - The update function is not working, so it's been disabled entirely for this build.
     - The user experience meets the requirements of the brief, but it deviates slightly in some places. It should be modified to meet entirely the requirements of the brief. (This is largely a function of the boilerplate interface and should be addressed after the code is refactored and the design updated.)
