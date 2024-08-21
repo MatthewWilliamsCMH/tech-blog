@@ -1,7 +1,49 @@
 const router = require('express').Router();
-const { text } = require('express');
-const { Post } = require('../../models');
+const { Post, User, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
+
+//get one post
+router.get('/:id', async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['name']
+        },
+        {
+          model: Comment,
+          include: [{model: User, as: 'commenter', attributes: ['name']}],
+        }
+      ]
+    });
+
+    //if nothing is returned
+    if (!postData) {
+      res.status(404).json({message: 'Unable to locate the blog post.'});
+      return;
+    }
+
+    //if a post is found, get comments and commenter
+    const post = postData.get({ plain: true });
+    const comments = post.comments.map(comment => ({
+      ...comment,
+      commenterName: comment.commenter ? comment.commenter.name : 'Unknown'
+    }));
+    const thisUser = req.session.user_id
+
+    //then render the post
+    res.render('post', {
+      post,
+      comments,
+      thisUser,
+      logged_in: req.session.logged_in
+    });
+  } 
+  catch (err) {
+    res.status(500).json({message: 'Error retrieving the blog post.', error: err.message});
+  }
+});
 
 //post a new blog post
 router.post('/', withAuth, async (req, res) => {
@@ -18,24 +60,46 @@ router.post('/', withAuth, async (req, res) => {
 });
 
 //update a post
-router.get('/update', withAuth, (req, res) => {
-  res.render('update')
-})
-
-router.put('/:id', withAuth, async (req, res) => {
+//get one post
+router.get('/update/:id', async (req, res) => {
   try {
-    const [newPost] = await Post.update({
+    const postData = await Post.findByPk(req.params.id, {});
+
+    //if nothing is returned
+    if (!postData) {
+      res.status(404).json({message: 'Unable to locate the blog post.'});
+      return;
+    }
+
+    //if a post is found, get comments and commenter
+    const post = postData.get({ plain: true });
+    const thisUser = req.session.user_id
+
+    //then render the post
+    res.render('update', {
+      post,
+      thisUser,
+      logged_in: req.session.logged_in
+    });
+  } 
+  catch (err) {
+    res.status(500).json({message: 'Error retrieving the blog post.', error: err.message});
+  }
+});
+
+router.put('/update/:id', withAuth, async (req, res) => {
+  try {
+    const [updPost] = await Post.update({
       title: req.body.title,
       text: req.body.text
     },
     {
       where: {
         id: req.params.id,
-        // user_id: req.session.user_id
       }
     });
       
-    if (newPost) {
+    if (updPost) {
       const updatePost = await Post.findByPk(req.params.id);
       res.status(200).json(updatePost);
     }
@@ -67,6 +131,22 @@ router.delete ('/:id', withAuth, async (req, res) => {
   }
   catch (err) {
     res.status(500).json({message: 'Error deleting the blog post.', error: err.message})
+  }
+});
+
+//post a new comment
+router.post('/comment', withAuth, async (req, res) => {
+  try {
+    const { text, post_id } = req.body;
+    const newComment = await Comment.create({
+      text,
+      post_id: post_id,
+      user_id: req.session.user_id
+    });
+    res.status(200).json(newComment)
+  } 
+  catch (err) {
+    res.status(500).json({ message: 'Error adding the comment.', error: err.message });
   }
 });
 

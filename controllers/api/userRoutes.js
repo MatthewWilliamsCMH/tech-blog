@@ -1,21 +1,6 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
-//generic route to home page
-router.post('/', async (req, res) => {
-  try {
-    const userData = await User.create(req.body);
-
-    req.session.save(() => {  //create a new session with the user's id and setting their logged-in status to true
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
-      res.status(200).json(userData);
-    });
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
-
 router.post ('/login', async (req, res) => {
   try {
     const userData = await User.findOne({where: {email: req.body.email}});

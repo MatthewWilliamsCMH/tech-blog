@@ -12,25 +12,24 @@
 <body>
   <div class='flex-column justify-space-around'>
     <header class='display-flex justify-space-between align-center p-2'>
-      <h1>
-        <a href='/'>Tech Blog</a>
-      </h1>
+      <h1>Tech Blog</h1>
+      {{!-- {{#if logged_in}}
+        <p>Welcome, {{user_name}}!<p>
+      {{else}}
+        <p>You're not logged in.</p>
+      {{/if}} --}}
       <nav>
         {{#if logged_in}}
-          <a href='/'>HOME</a>&emsp;|&emsp;<a href='/dashboard'>DASHBOARD</a>&emsp;|&emsp;<button class='no-button' id='logout'>LOGOUT</button>
+          <a href='/home'>HOME</a>&emsp;|&emsp;<a href='/dashboard'>DASHBOARD</a>&emsp;|&emsp;<button class='no-button' id='logout'>LOGOUT</button>
         {{else}}
-          <a href='/'>HOME</a>&emsp;|&emsp;<a href='/dashboard'>DASHBOARD</a>&emsp;|&emsp;<a href='/login'>LOGIN</a>
+          <a href='/home'>HOME</a>&emsp;|&emsp;<a href='/dashboard'>DASHBOARD</a>&emsp;|&emsp;<a href='/'>LOGIN</a>
         {{/if}}
       </nav>
     </header>
     <main class='container container-fluid mt-5'>
       {{{ body }}}
     </main>
-    <footer>
-      
-    </footer>
   </div>
-
   {{#if logged_in}}
     <script src='/js/logout.js'></script>
   {{/if}}

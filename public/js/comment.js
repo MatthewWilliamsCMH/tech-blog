@@ -4,7 +4,7 @@ const addCmtHandler = async (event) => {
   const text = document.querySelector('#comment-text').value.trim();
   const post_id = event.target.getAttribute('data-id');
   if (text && post_id) {
-    const response = await fetch(`/api/comments`, {
+    const response = await fetch(`/api/posts/comment`, {
       method: 'POST',
       body: JSON.stringify({ text, post_id }),
       headers: {
@@ -13,12 +13,11 @@ const addCmtHandler = async (event) => {
     });
     if (response.ok) {
       document.location.reload();
-    } else {
+    } 
+    else {
       alert('Unable to create the comment.');
     }
   }
 };
 
-document
-  .querySelector('.new-comment-form')
-  .addEventListener('submit', addCmtHandler);
+document.querySelector('.new-comment-form').addEventListener('submit', addCmtHandler);

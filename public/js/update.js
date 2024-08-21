@@ -1,10 +1,26 @@
-//I've completely commented out the updat function until I can get it workign correctly.
+//update a post
+const updPstHandler = async (event) => {
+    const title=postData.title;
+    const text=postData.text;
+    const id=postData.id;
+    
+    if (title && text && id) {
+        const response = await fetch(`/api/posts/update/${id}`, {
+            method: 'PUT',
+            body: JSON.stringify({ title, text }),
+            headers: {
+             'Content-Type': 'application/json',
+            },
+        });
 
-// window.addEventListener('DOMContentLoaded', (event) => {
-//   const postData = JSON.parse(sessionStorage.getItem('postData'));
+        if (response.ok) {
+            console.log(response)
+            document.location.replace('/update');
+        }
+        else {
+            alert('Unable to update the blog post.');
+        }
+    }
+};
 
-//   if (postData) {
-//     document.querySelector('#post-title').value = postData.title;
-//     document.querySelector('#post-text').value = postData.text;
-//     }
-// });
+document.querySelector('#updPstBtn').addEventListener('submit', updPstHandler);
