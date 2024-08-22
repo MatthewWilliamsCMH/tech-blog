@@ -5,6 +5,7 @@ nameSignup = document.getElementById('name-signup')
 emailSignup = document.getElementById('email-signup')
 passSignup = document.getElementById('password-signup')
 
+//validate user
 const loginFrmHandler = async (event) => {
   event.preventDefault();
   const email = document.querySelector('#email-login').value.trim();
@@ -20,15 +21,12 @@ const loginFrmHandler = async (event) => {
     if (response.ok) {
       document.location.replace('/home');
     } else {
-      alert('Please sign up before trying to log in.');
-      emailSignup.value = emailLogin.value;
-      passSignup.value = emailLogin.value;
-      emailLogin.value = "";
-      passLogin.value = "";
+      alert('Username or password is incorrect.');
     }
   }
 };
 
+//sign-up new user
 const signupFrmHandler = async (event) => {
   event.preventDefault();
 

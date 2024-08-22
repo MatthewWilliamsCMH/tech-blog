@@ -59,9 +59,8 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-//update a post
-//get one post
-router.get('/update/:id', async (req, res) => {
+//get post for updating
+router.get('/update/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {});
 
@@ -87,25 +86,43 @@ router.get('/update/:id', async (req, res) => {
   }
 });
 
+
+// //post a new blog post
+// router.post('/', withAuth, async (req, res) => {
+//   try {
+//     const newPost = await Post.create({
+//       ...req.body,
+//       user_id: req.session.user_id
+//     })
+//     res.status(200).json(newPost);
+//   }
+//   catch (err) {
+//     res.status(400).json({message: 'Unable to add the blog post', error: err.message})
+//   }
+// });
+
+
+//update post
 router.put('/update/:id', withAuth, async (req, res) => {
   try {
-    const [updPost] = await Post.update({
+    const updPost = await Post.update({
       title: req.body.title,
       text: req.body.text
-    },
-    {
-      where: {
-        id: req.params.id,
-      }
+    // },
+    // {
+    //   where: {
+    //     id: req.params.id,
+    //   }
     });
+    res.status(200).json(updPost)
       
-    if (updPost) {
-      const updatePost = await Post.findByPk(req.params.id);
-      res.status(200).json(updatePost);
-    }
-    else {
-      res.status(404).json({message: 'Unable to find the post to update.', error: err.message});
-    }
+    // if (updPost) {
+    //   const updatePost = await Post.findByPk(req.params.id);
+    //   res.status(200).json(updatePost);
+    // }
+    // else {
+    //   res.status(404).json({message: 'Unable to find the post to update.', error: err.message});
+    // }
   }
   catch (err) {
     res.status(400).json({message: 'Unable to update the blog post', error: err.message})

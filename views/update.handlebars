@@ -1,22 +1,21 @@
 <div class='row mt-4'>
   <div class='col-md-6'>
     <h3>Update a Post</h3>
-
     <form class='form upd-post-form'>
+      <div id='post-data' data-id='{{post.id}}'></div>
       <div class='form-group'>
-        <label for='upd-title'>Title</label>
-        <input class='form-input' type='text' id='upd-title' name='upd-title' value={{post.title}}/>
+        <label for='post-title'>Title</label>
+        <input id='post-title' class='form-input' type='text' name='post-title' value='{{post.title}}'/>
       </div>
       <div class='form-group'>
-        <label for='upd-text'>Text</label>
-        <textarea class='form-input' id='upd-text' name='upd-text'>{{post.text}}</textarea>
+        <label for='post-text'>Text</label>
+        <textarea id='post-text' class='form-input' name='post-text'>{{post.text}}</textarea>
       </div>
       <div class='form-group'>
-        <button type='submit' class='btn btn-primary'>Save</button>
+        <button id="savePstBtn" class='btn btn-primary'>Save</button>
       </div>
     </form>
   </div>
 </div>
 
- {{!-- <script src='./js/post.js'></script> --}}
-  <script src='./js/update.js'></script>
+<script src='/js/update.js'></script>

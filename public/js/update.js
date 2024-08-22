@@ -1,11 +1,14 @@
 //update a post
 const updPstHandler = async (event) => {
-    const title=postData.title;
-    const text=postData.text;
-    const id=postData.id;
+
+    const postDataEl = document.getElementById('post-data');
+    const id = postData.dataset.id;
+    alert(id)
+    const title = document.querySelector('#post-title').value.trim();
+    const text = document.querySelector('#post-text').value.trim();
     
-    if (title && text && id) {
-        const response = await fetch(`/api/posts/update/${id}`, {
+    if (title && text) {
+        const response = await fetch(`/api/posts/${id}`, {
             method: 'PUT',
             body: JSON.stringify({ title, text }),
             headers: {
@@ -14,8 +17,7 @@ const updPstHandler = async (event) => {
         });
 
         if (response.ok) {
-            console.log(response)
-            document.location.replace('/update');
+            document.location.replace('/update/:id');
         }
         else {
             alert('Unable to update the blog post.');
@@ -23,4 +25,4 @@ const updPstHandler = async (event) => {
     }
 };
 
-document.querySelector('#updPstBtn').addEventListener('submit', updPstHandler);
+document.getElementById('savePstBtn').addEventListener('click', updPstHandler);

@@ -38,24 +38,26 @@ const delPstHandler = async (event) => {
   }
 };
 
-//load a post for editing
-const loadUpdPgeHandler = async (event) => {
-  // event.preventDefault();
+//load a post for updating
+const loadUpdPgHandler = async (event) => {
 
   const postEl = document.querySelector('#postEl');
   const id = postEl.dataset.id;
+
+  //In the network tab in Chrome, I get two "9" results, but why?
   const response = await fetch(`/api/posts/update/${id}`);
-  
+
   if (response.ok) {
-    // document.location.replace('/update');
+    //I don't understand why this can't just be /update. The fetch already gets the data at api/posts/update/$id
+    document.location.replace(`/api/posts/update/${id}`);
   } 
   else {
-    alert('Unable to retrieve the blog post.');
+    alert('Unable to retrieve the damn blog post.');
   }
 };
 
 document.querySelector('.new-post-form').addEventListener('submit', addPstHandler);
-document.getElementById('updPstBtn').addEventListener('click', loadUpdPgeHandler);
+document.getElementById('updPstBtn').addEventListener('click', loadUpdPgHandler);
 
 document.addEventListener('DOMContentLoaded', () => {
   const delPstBtn = document.getElementById('delPstBtn');

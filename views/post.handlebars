@@ -1,14 +1,14 @@
-<div id='postEl' class='text-left' data-id='{{post.id}}' data-title='{{post.title}}' data-text='{{post.text}}'>
-  <h2 id='post-title'>{{post.title}}</h2>
+<div id='postEl' class='text-left' data-id='{{post.id}}'>
+  <h2 id='post-title' data-title='{{post.title}}'>{{post.title}}</h2>
   <p>Posted by {{post.user.name}} on {{format_date post.date_created}}</p>
   <p id='post-text'>{{post.text}}</p>
   {{#if (eq thisUser post.user_id)}}
-    <button class='btn btn-sm' id='updPstBtn'>Update</button>
-    <button class='btn btn-sm btn-danger' id='delPstBtn'>Delete</button>
+    <button id='updPstBtn' class='btn btn-sm'>Update</button>
+    <button id='delPstBtn' class='btn btn-sm btn-danger'>Delete</button>
     {{!-- <button class='btn btn-sm' data-id='{{post.id}}' id='updPstBtn'>Update</button>
     <button class='btn btn-sm btn-danger' data-id='{{post.id}}' id='delPstBtn'>Delete</button> --}}
   {{else}}
-    <button class='btn btn-sm btn-danger' id='delPstBtn' style='visibility: hidden;'>Delete</button>
+    <button id='delPstBtn' class='btn btn-sm btn-danger' style='visibility: hidden;'>Delete</button>
     {{!-- <button class='btn btn-sm btn-danger' data-id='{{post.id}}' id='delPstBtn' style='visibility: hidden;'>Delete</button> --}}
   {{/if}}
 </div>
@@ -32,4 +32,4 @@
 
 <script src='/js/post.js'></script>
 <script src='/js/comment.js'></script>
-<script src='/js/update.js'></script>
+{{!-- <script src='/js/update.js'></script> --}}
