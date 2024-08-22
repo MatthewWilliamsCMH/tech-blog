@@ -44,7 +44,6 @@ Without logging in, you can read the posts by clicking on their titles. To add p
 After five minutes of inactivity, you will be logged out.
 
 ## Future Development
-- The update function is not working, so it's been disabled entirely for this build.
 - The user experience meets the requirements of the brief, but it deviates slightly in some places. It should be modified to meet entirely the requirements of the brief. (This is largely a function of the boilerplate interface and should be addressed after the code is refactored and the design updated.)
 - The code needs to be refactored for efficiency and more logical modularization.
 - The interface is boilerplate and should be updated.

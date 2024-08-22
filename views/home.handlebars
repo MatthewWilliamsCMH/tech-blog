@@ -1,10 +1,6 @@
 {{#each posts as |post| }}
-<div class='row mb-1 project' >
-  <div class='col-md-12'>
-    <h2>
-      <a href='/api/posts/{{post.id}}'>{{post.title}}</a>
-    </h2>
-    <p>{{format_date post.date_created}}</p>
-  </div>
+<div class="card">
+  <p>{{format_date post.date_created}}</p>
+  <h3><a href='/api/posts/{{post.id}}'>{{post.title}}</a></h3>
 </div>
 {{/each}}

@@ -5,28 +5,35 @@
   <meta charset='UTF-8'>
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
   <title>Tech Blog</title>
-  <link rel='stylesheet' href='/css/jass.css'>
+  {{!-- <link rel="stylesheet" href="./assets/reset.css"> --}}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alegreya+SC:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400;1,500;1,700;1,800;1,900&family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link rel='stylesheet' href='/css/style.css'>
 </head>
 
-<body>
-  <div class='flex-column justify-space-around'>
-    <header class='display-flex justify-space-between align-center p-2'>
+<body class="alegreya">
+  <div>
+    <header class="alegreya_bold header">
+      <img src="/images/circuit.svg" width=150px; alt="Circuit Diagram">
+      <div>
       <h1>Tech Blog</h1>
       {{!-- {{#if logged_in}}
         <p>Welcome, {{user_name}}!<p>
       {{else}}
         <p>You're not logged in.</p>
       {{/if}} --}}
-      <nav>
+      <nav class="alegreya">
         {{#if logged_in}}
-          <a href='/home'>HOME</a>&emsp;|&emsp;<a href='/dashboard'>DASHBOARD</a>&emsp;|&emsp;<button class='no-button' id='logout'>LOGOUT</button>
+          <a href='/home' class="button">HOME</a>&emsp;|&emsp;<a href='/dashboard' class="button">DASHBOARD</a>&emsp;|&emsp;<button id='logout' class="button">LOGOUT</button>
         {{else}}
-          <a href='/home'>HOME</a>&emsp;|&emsp;<a href='/dashboard'>DASHBOARD</a>&emsp;|&emsp;<a href='/'>LOGIN</a>
+          <a href='/home' class="button">HOME</a>&emsp;|&emsp;<a href='/dashboard' class="button">DASHBOARD</a>&emsp;|&emsp;<a href='/' class="button">LOGIN</a>
         {{/if}}
-      </nav>
+        </nav>
+      </div>
     </header>
-    <main class='container container-fluid mt-5'>
+    <main>
       {{{ body }}}
     </main>
   </div>

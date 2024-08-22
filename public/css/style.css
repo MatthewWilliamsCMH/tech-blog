@@ -1,18 +1,96 @@
-header, .post:not(:last-child) {
-  border-bottom: 1px solid #ccc;
+/*---------- site-wide ----------*/
+.alegreya {
+  font-family:"Alegreya", serif;
+  font-size:16px;
+  font-weight:400;
+  line-height: 120%;
+  color:black;
 }
 
-.no-button {
+.alegreya_bold {
+  font-family:"Alegreya", serif;
+  font-size:16px;
+  font-weight:700;
+  line-height: 120%;
+  color:black;
+}
+
+body {
+  font-kerning:normal;
+  display:flex;
+  flex-direction:column;
+  max-width:720px;
+  left:0;
+  right:0;
+  margin:auto;
+}
+
+/*---------- header ----------*/
+header {
+  display:flex;
+  gap:1rem;
+  align-items:last baseline;
+}
+
+h1 {
+  font-size:3rem;
+  color:rgb(232, 110, 4);
+}
+
+header {
+  border-bottom:2px solid rgb(92, 35, 167);
+  padding-bottom:10px;
+  margin-bottom:20px;
+}
+nav > .button {
+  font-family:"Alegreya", serif;
+  font-size: 1.6rem;
+  font-variant: small-caps;
+  text-transform:lowercase;
+  text-decoration: none;
+  color:black;
+  letter-spacing:.1rem;
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
-  color: #1b89bc;
-  text-decoration: none;
-  font-size: 100%;
 }
 
-.no-button:hover {
-  color: #065b83;
-  text-decoration: underline;
+nav > .button:hover {
+  text-decoration:none;
+  text-shadow:0 0 5px rgb(232, 110, 4);
 }
+
+/*---------- main ----------*/
+main {
+  font-family:Arial, Helvetica, sans-serif;
+  font-size:1rem;
+  align-items:first baseline;
+}
+
+/*---------- articles ----------*/
+.card {
+  display:inline-block;
+  padding:10px;
+  margin:10px;
+  width:calc(33.333% - 46px);
+  border:1px solid rgb(232, 110, 4);
+  border-radius:.75rem;
+  background: hsl(28, 97%, 90%);
+  box-shadow: -5px 5px 10px rgba(232, 110, 4, .5);
+}
+
+.card > p {
+  font-size: .85rem;
+  line-height: 100%;
+}
+
+h3 {
+  font-weight:400;
+  line-height:135%;
+  margin-top:.2rem;
+
+}
+/*---------- dashboard ----------*/
+
+/*---------- login ----------*/
