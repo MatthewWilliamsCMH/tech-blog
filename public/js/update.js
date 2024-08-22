@@ -1,23 +1,19 @@
 //update a post
 const updPstHandler = async (event) => {
-
-    const postDataEl = document.getElementById('post-data');
-    const id = postData.dataset.id;
-    alert(id)
+    const id = document.getElementById('post-data').dataset.id;
     const title = document.querySelector('#post-title').value.trim();
     const text = document.querySelector('#post-text').value.trim();
-    
     if (title && text) {
-        const response = await fetch(`/api/posts/${id}`, {
+        const response = await fetch(`/api/posts/update/${id}`, {
             method: 'PUT',
             body: JSON.stringify({ title, text }),
             headers: {
              'Content-Type': 'application/json',
-            },
+            }
         });
 
         if (response.ok) {
-            document.location.replace('/update/:id');
+            document.location.replace('/home');
         }
         else {
             alert('Unable to update the blog post.');

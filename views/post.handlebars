@@ -5,11 +5,8 @@
   {{#if (eq thisUser post.user_id)}}
     <button id='updPstBtn' class='btn btn-sm'>Update</button>
     <button id='delPstBtn' class='btn btn-sm btn-danger'>Delete</button>
-    {{!-- <button class='btn btn-sm' data-id='{{post.id}}' id='updPstBtn'>Update</button>
-    <button class='btn btn-sm btn-danger' data-id='{{post.id}}' id='delPstBtn'>Delete</button> --}}
   {{else}}
     <button id='delPstBtn' class='btn btn-sm btn-danger' style='visibility: hidden;'>Delete</button>
-    {{!-- <button class='btn btn-sm btn-danger' data-id='{{post.id}}' id='delPstBtn' style='visibility: hidden;'>Delete</button> --}}
   {{/if}}
 </div>
 
@@ -32,4 +29,3 @@
 
 <script src='/js/post.js'></script>
 <script src='/js/comment.js'></script>
-{{!-- <script src='/js/update.js'></script> --}}
