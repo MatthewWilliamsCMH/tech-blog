@@ -1,24 +1,27 @@
-<div id='postEl' class='text-left' data-id='{{post.id}}'>
-  <h2 id='post-title' data-title='{{post.title}}'>{{post.title}}</h2>
-  <p>Posted by {{post.user.name}} on {{format_date post.date_created}}</p>
-  <p id='post-text'>{{post.text}}</p>
-  {{#if (eq thisUser post.user_id)}}
-    <button id='updPstBtn' class='btn btn-sm'>Update</button>
-    <button id='delPstBtn' class='btn btn-sm btn-danger'>Delete</button>
-  {{else}}
-    <button id='delPstBtn' class='btn btn-sm btn-danger' style='visibility: hidden;'>Delete</button>
-  {{/if}}
+<div id='pstEl' data-id='{{post.id}}'>
+  <h2 id='pstTitle' data-title='{{post.title}}'>{{post.title}}</h2>
+  <p class="byline">Posted by {{post.user.name}} on {{format_date post.date_created}}</p>
+  <p id='pstText'>{{post.text}}</p>
+  <div class="alignRight">
+    {{#if (eq thisUser post.user_id)}}
+      <button id='updPstBtn'>Update</button>
+      <button id='delPstBtn'>Delete</button>
+    {{else}}
+      <button id='delPstBtn' style='visibility: hidden;'>Delete</button>
+    {{/if}}
+  </div>
 </div>
+<hr>
 
 {{#if logged_in}}
   <div>
     <h3>New Comment</h3>
-    <form class='form new-comment-form' data-id='{{post.id}}'>
-      <div class='form-group'>
-        <textarea class='form-input' id='comment-text' name='comment-text'></textarea>
+    <form id='newCmtFrm' data-id='{{post.id}}'>
+      <div>
+        <textarea id='cmtTxt' name='cmtTxt'></textarea>
       </div>
-      <div class='form-group'>
-        <button type='submit' class='btn btn-primary'>Post</button>
+      <div>
+        <button type='submit'>Post</button>
       </div>
     </form>
   </div>

@@ -1,38 +1,39 @@
-emailLogin = document.getElementById('email-login')
-passLogin = document.getElementById('password-login')
+emailLogin = document.getElementById('loginEmail');
+passLogin = document.getElementById('loginPass');
 
-nameSignup = document.getElementById('name-signup')
-emailSignup = document.getElementById('email-signup')
-passSignup = document.getElementById('password-signup')
+nameSignup = document.getElementById('signupName');
+emailSignup = document.getElementById('signupEmail');
+passSignup = document.getElementById('signupPass');
 
 //validate user
 const loginFrmHandler = async (event) => {
   event.preventDefault();
-  const email = document.querySelector('#email-login').value.trim();
-  const password = document.querySelector('#password-login').value.trim();
+  const email = document.getElementById('loginEmail').value.trim();
+  const password = document.getElementById('loginPass').value.trim();
 
   if (email && password) {
     const response = await fetch('/api/users/login', {
       method: 'POST',
       body: JSON.stringify({ email, password }),
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json' }
     });
 
     if (response.ok) {
       document.location.replace('/home');
-    } else {
+    } 
+    else {
       alert('Username or password is incorrect.');
-    }
-  }
+    };
+  };
 };
 
 //sign-up new user
 const signupFrmHandler = async (event) => {
   event.preventDefault();
 
-  const name = document.querySelector('#name-signup').value.trim();
-  const email = document.querySelector('#email-signup').value.trim();
-  const password = document.querySelector('#password-signup').value.trim();
+  const name = document.getElementById('signupName').value.trim();
+  const email = document.getElementById('signupEmail').value.trim();
+  const password = document.getElementById('signupPass').value.trim();
 
   if (name && email && password) {
     const response = await fetch('/api/users/signup', {
@@ -49,5 +50,5 @@ const signupFrmHandler = async (event) => {
   };
 };
 
-document.querySelector('.login-form').addEventListener('submit', loginFrmHandler);
-document.querySelector('.signup-form').addEventListener('submit', signupFrmHandler);
+document.getElementById('loginFrm').addEventListener('submit', loginFrmHandler);
+document.getElementById('signupFrm').addEventListener('submit', signupFrmHandler);

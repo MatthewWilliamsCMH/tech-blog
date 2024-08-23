@@ -1,8 +1,8 @@
 //update a post
 const updPstHandler = async (event) => {
-    const id = document.getElementById('post-data').dataset.id;
-    const title = document.querySelector('#post-title').value.trim();
-    const text = document.querySelector('#post-text').value.trim();
+    const id = document.getElementById('pstData').dataset.id;
+    const title = document.getElementById('pstTitle').value.trim();
+    const text = document.getElementById('pstText').value.trim();
     if (title && text) {
         const response = await fetch(`/api/posts/update/${id}`, {
             method: 'PUT',

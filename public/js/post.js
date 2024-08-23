@@ -2,8 +2,8 @@
 const addPstHandler = async (event) => {
   event.preventDefault();
 
-  const title = document.querySelector('#post-title').value.trim();
-  const text = document.querySelector('#post-text').value.trim();
+  const title = document.getElementById('pstTitle').value.trim();
+  const text = document.getElementById('pstText').value.trim();
 
   if (title && text) {
     const response = await fetch(`/api/posts`, {
@@ -40,23 +40,12 @@ const delPstHandler = async (event) => {
 
 //load a post for updating
 const loadUpdPgHandler = async (event) => {
-
-  const postEl = document.querySelector('#postEl');
+  const postEl = document.getElementById('pstEl');
   const id = postEl.dataset.id;
-
-  //In the network tab in Chrome, I get two "9" results, but why?
-  const response = await fetch(`/api/posts/update/${id}`);
-
-  if (response.ok) {
-    //I don't understand why this can't just be /update. The fetch already gets the data at api/posts/update/$id
-    document.location.replace(`/api/posts/update/${id}`);
-  } 
-  else {
-    alert('Unable to retrieve the damn blog post.');
-  }
+  document.location.replace(`/api/posts/update/${id}`);
 };
 
-document.querySelector('.new-post-form').addEventListener('submit', addPstHandler);
+document.getElementById('newPstFrm').addEventListener('submit', addPstHandler);
 document.getElementById('updPstBtn').addEventListener('click', loadUpdPgHandler);
 
 document.addEventListener('DOMContentLoaded', () => {

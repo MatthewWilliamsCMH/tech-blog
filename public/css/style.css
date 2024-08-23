@@ -1,21 +1,12 @@
 /*---------- site-wide ----------*/
-.alegreya {
-  font-family:"Alegreya", serif;
-  font-size:16px;
-  font-weight:400;
-  line-height: 120%;
-  color:black;
-}
-
-.alegreya_bold {
-  font-family:"Alegreya", serif;
-  font-size:16px;
-  font-weight:700;
-  line-height: 120%;
-  color:black;
+:root {
+  --blue: #274353;
+  --orange: #e86e04;
 }
 
 body {
+  font-family:"Alegreya", sans-serif;
+  line-height:135%;
   font-kerning:normal;
   display:flex;
   flex-direction:column;
@@ -25,72 +16,133 @@ body {
   margin:auto;
 }
 
-/*---------- header ----------*/
+h1 {
+  font-size:3rem;
+  margin-bottom:1rem;
+  color:var(--orange);
+}
+
+h2 {
+  font-size:2rem;
+  font-family:'Alegreya', serif;
+  font-weight:600;
+  line-height:135%;
+  color:var(--orange);
+  margin-bottom:0;
+}
+
+h3 {
+  font-weight:600;
+  line-height:135%;
+  margin-top:.2rem;
+}
+
+button {
+  font-size:.9rem;
+  box-shadow:-5px 5px 5px #ccc;
+  border: 1px solid var(--blue);
+  border-radius:3px;
+}
+
+.alignRight {
+  right:0;
+  text-align:right;
+}
+
+/*---------- main.handlebars ----------*/
 header {
   display:flex;
   gap:1rem;
   align-items:last baseline;
-}
-
-h1 {
-  font-size:3rem;
-  color:rgb(232, 110, 4);
-}
-
-header {
-  border-bottom:2px solid rgb(92, 35, 167);
+  border-bottom:2px solid var(--blue);
   padding-bottom:10px;
   margin-bottom:20px;
 }
 nav > .button {
   font-family:"Alegreya", serif;
-  font-size: 1.6rem;
-  font-variant: small-caps;
+  font-size:1.6rem;
+  font-weight:400;
   text-transform:lowercase;
-  text-decoration: none;
+  font-variant:small-caps;
+  text-decoration:none;
   color:black;
   letter-spacing:.1rem;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
+  background:none;
+  border:none;
+  padding:0;
+  cursor:pointer;
+  box-shadow:none;
 }
 
 nav > .button:hover {
   text-decoration:none;
-  text-shadow:0 0 5px rgb(232, 110, 4);
+  text-shadow:0 0 5px var(--orange);
 }
 
-/*---------- main ----------*/
 main {
-  font-family:Arial, Helvetica, sans-serif;
+  font-family:"Raleway", sans-serif;
   font-size:1rem;
-  align-items:first baseline;
 }
 
-/*---------- articles ----------*/
+/*---------- login ----------*/
+.columns {
+  display:flex;
+  gap:2rem;
+}
+
+.column {
+  flex-direction:column;
+  flex:1 1 auto;
+}
+
+.verticalRule {
+  border-left:2px dotted var(--blue);
+}
+
+input {
+  font-size:1.25rem;
+  width:100%;
+  border:1px solid #ccc;
+  margin-top:.1rem;
+  margin-bottom:1rem;
+  box-shadow:-5px 5px 5px #ccc;
+  box-sizing:border-box;
+}
+
+/*---------- cards ----------*/
+.grid {
+  display:flex;
+  flex-wrap:wrap;
+}
+
 .card {
   display:inline-block;
   padding:10px;
   margin:10px;
   width:calc(33.333% - 46px);
-  border:1px solid rgb(232, 110, 4);
+  border:1px solid var(--orange);
   border-radius:.75rem;
-  background: hsl(28, 97%, 90%);
-  box-shadow: -5px 5px 10px rgba(232, 110, 4, .5);
+  background:hsl(28, 97%, 90%);
+  box-shadow:-5px 5px 10px #ccc;
 }
 
 .card > p {
-  font-size: .85rem;
-  line-height: 100%;
+  font-size:.85rem;
+  line-height:100%;
 }
 
-h3 {
-  font-weight:400;
-  line-height:135%;
-  margin-top:.2rem;
-
+/*---------- post ----------*/
+.byline {
+  font-size:.8rem;
+  font-weight:600;
 }
+
+textarea {
+  width:100%;
+}
+.byline + p {
+  margin-top:0;
+}
+
 /*---------- dashboard ----------*/
 
-/*---------- login ----------*/

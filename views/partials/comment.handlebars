@@ -1,8 +1,8 @@
   <h4>Past Comments</h4>
-  <form class='form new-post-form'>
-    <section class='text-left'>
+  <form id='newCmtFrm'> <!--(this was newPstFrm, but I thnk that was wrong)-->
+    <section>
       {{#each comments as |comment|}}
-        <div class='comment'>
+        <div>
           <p><strong>On {{format_date comment.date_created}}, {{comment.commenterName}} said</strong>: {{comment.text}}
         </div>
       {{/each}}

@@ -1,18 +1,18 @@
-<div class='row mt-4'>
-  <div class='col-md-6'>
+<div>
+  <div>
     <h3>Update a Post</h3>
-    <form class='form upd-post-form'>
-      <div id='post-data' data-id='{{post.id}}'></div>
-      <div class='form-group'>
-        <label for='post-title'>Title</label>
-        <input id='post-title' class='form-input' type='text' name='post-title' value='{{post.title}}'/>
+    <form id='updPstFrm'>
+      <div id='pstData' data-id='{{post.id}}'></div>
+      <div>
+        <label for='pstTitle'>Title</label>
+        <input id='pstTitle' type='text' name='pstTitle' value='{{post.title}}'/>
       </div>
-      <div class='form-group'>
-        <label for='post-text'>Text</label>
-        <textarea id='post-text' class='form-input' name='post-text'>{{post.text}}</textarea>
+      <div>
+        <label for='pstText'>Text</label>
+        <textarea id='pstText' name='pstText'>{{post.text}}</textarea>
       </div>
-      <div class='form-group'>
-        <button id="savePstBtn" class='btn btn-primary'>Save</button>
+      <div>
+        <button id="savePstBtn">Save</button>
       </div>
     </form>
   </div>

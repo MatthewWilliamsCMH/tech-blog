@@ -1,38 +1,40 @@
-<div class='row'>
-  <div class='col-md-6'>
+<div class="columns">
+  <div class="column">
     <h2>Login</h2>
-    <form class='form login-form'>
-      <div class='form-group'>
-        <label for='email-login'>Email</label>
-        <input class='form-input' type='email' id='email-login' required/>
+    <form id='loginFrm'>
+      <div>
+        <label for='loginEmail'>Email</label>
+        <input id='loginEmail' type='email' name='loginEmail' required/>
       </div>
-      <div class='form-group'>
-        <label for='password-login'>Password</label>
-        <input class='form-input' type='password' id='password-login' required/>
+      <div>
+        <label for='loginPass'>Password</label>
+        <input id='loginPass' type='password' name='loginPass' required/>
       </div>
-      <div class='form-group'>
-        <button class='btn btn-primary' type='submit'>Login</button>
+      <div>
+        <button type='submit'>Login</button>
       </div>
     </form>
   </div>
+
+  <div class="verticalRule"></div>
   
-  <div class='col-md-6'>
+  <div class="column">
     <h2>Signup</h2>
-    <form class='form signup-form'>
-      <div class='form-group'>
-        <label for='name-signup'>Name</label>
-        <input class='form-input' type='text' id='name-signup' required/>
+    <form id='signupFrm'>
+      <div>
+        <label for='signupName'>Name</label>
+        <input id='signupName' type='text' name='signupName' required/>
       </div>
-      <div class='form-group'>
-        <label for='email-signup'>Email</label>
-        <input class='form-input' type='email' id='email-signup' required/>
+      <div>
+        <label for='signupEmail'>Email</label>
+        <input id='signupEmail' type='email' name='signupEmail' required/>
       </div>
-      <div class='form-group'>
-        <label for='password-signup'>Password</label>
-        <input class='form-input' type='password' id='password-signup' required/>
+      <div>
+        <label for='signupPass'>Password</label>
+        <input id='signupPass' type='password' name='signupPass' required/>
       </div>
-      <div class='form-group'>
-        <button class='btn btn-primary' type='submit'>Signup</button>
+      <div>
+        <button type='submit'>Signup</button>
       </div>
     </form>
   </div>
