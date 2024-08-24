@@ -44,9 +44,7 @@ Without logging in, you can read the posts by clicking on their titles. To add p
 After five minutes of inactivity, you will be logged out.
 
 ## Future Development
-- The user experience meets the requirements of the brief, but it deviates slightly in some places. It should be modified to meet entirely the requirements of the brief. (This is largely a function of the boilerplate interface and should be addressed after the code is refactored and the design updated.)
-- The code needs to be refactored for efficiency and more logical modularization.
-- The interface is boilerplate and should be updated.
+- The user experience meets the requirements of the brief, but it deviates slightly in some places. Some buttons in the nav appear not to function as a result of these deviation; they do actually work, but they return users to the page they're already on. The app should be modified to meet entirely the requirements of the brief.
 
 ## Contributing
 To contribute to Tech Blog, clone this repository locally and commit your code to a separate branch.
@@ -54,6 +52,6 @@ To contribute to Tech Blog, clone this repository locally and commit your code t
 ## Tests
 If you are making core library changes, please write unit tests for your code and ensure that everything is working correctly before opening a pull request.
 
-## Questions
+## Questionsgit 
 You can see my github repositories at [MatthewWilliamsCMH](https://github.com/MatthewWilliamsCMH/).  
 Drop me a line at [matthewwilliamscmh@icloud.com](mailto:matthewwilliamscmh@icloud.com).
