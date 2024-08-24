@@ -1,12 +1,10 @@
 //load a post for updating
+const loadUpdPgHandler = async (event) => {
+    const postEl = document.getElementById('pstEl');
+    const id = postEl.dataset.id;
+    document.location.replace(`/api/posts/update/${id}`);
+  }
 
-//THIS IS NOT BEING CALLED BECAUSE WE'RE STILL ON THE POST PAGE, SO IT'S GETTING JS FROM POST.JS
-// const loadUpdPgHandler = async (event) => {
-//     const updPstEl = document.getElementById('updPstEl');
-//     const id = updPstEl.dataset.id;
-//     document.location.replace(`/api/posts/update/${id}`);
-//   };
-  
 //update a post
 const updPstHandler = async (event) => {
     const id = document.getElementById('updPstData').dataset.id;

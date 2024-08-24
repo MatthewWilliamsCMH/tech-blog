@@ -25,7 +25,7 @@ const addPstHandler = async (event) => {
 
 //delete a post
 const delPstHandler = async (event) => {
-  const id = event.target.getAttribute('data-id');
+  const id = document.getElementById('pstEl').dataset.id;
   const response = await fetch(`/api/posts/${id}`, {
     method: 'DELETE'
   });
@@ -38,19 +38,10 @@ const delPstHandler = async (event) => {
   }
 };
 
-//load a post for updating
+//load update page
 const loadUpdPgHandler = async (event) => {
-  const postEl = document.getElementById('pstEl');
-  const id = postEl.dataset.id;
-  document.location.replace(`/api/posts/update/${id}`);
+  const id = document.getElementById('pstEl').dataset.id;
+  const response = await fetch (`/api/posts/${id}`);
+  document.location.replace (`update/${id}`);
 };
 
-document.getElementById('newPstFrm').addEventListener('submit', addPstHandler);
-document.getElementById('updPstBtn').addEventListener('click', loadUpdPgHandler);
-
-document.addEventListener('DOMContentLoaded', () => {
-  const delPstBtn = document.getElementById('delPstBtn');
-  if (delPstBtn && delPstBtn.style.visibility !== 'hidden') {
-    delPstBtn.addEventListener('click', delPstHandler);
-  }
-});

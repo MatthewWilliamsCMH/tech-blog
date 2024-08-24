@@ -11,6 +11,7 @@
     {{/if}}
   </div>
 </div>
+
 <hr>
 
 {{#if logged_in}}
@@ -18,7 +19,7 @@
     <h3>New Comment</h3>
     <form id='newCmtFrm' data-id='{{post.id}}'>
       <div>
-        <textarea id='cmtTxt' name='cmtTxt'></textarea>
+        <textarea id='cmtText' name='cmtText'></textarea>
       </div>
       <div>
         <button type='submit'>Post</button>
@@ -31,4 +32,18 @@
 {{/if}}
 
 <script src='/js/post.js'></script>
-<script src='/js/comment.js'></script>
+
+<script>
+  if (document.getElementById('updPstBtn')) {
+    document.getElementById('updPstBtn').addEventListener('click', loadUpdPgHandler);
+  };
+  document.addEventListener('DOMContentLoaded', () => {
+    const delPstBtn = document.getElementById('delPstBtn');
+    if (delPstBtn && delPstBtn.style.visibility !== 'hidden') {
+      delPstBtn.addEventListener('click', delPstHandler);
+    };
+  });
+</script>
+
+
+{{!-- <script src='/js/comment.js'></script> --}}

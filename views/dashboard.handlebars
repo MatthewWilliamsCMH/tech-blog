@@ -1,33 +1,33 @@
-<!--I've commented out the unneeded delete button below until I can restyle the app, at which point, that whole div will be unneeded.-->
-<div>
-  <div>
+<h2>Dashboard</h2>
+<div class="columns">
+  <div class="majorColumn">
     <h3>Create a New Post</h3>
-
-    <form id='newPstFrm'>
-      <div>
-        <label for='pstTitle'>Title</label>
-        <input id='pstTitle' type='text' name='pstTitle' />
-      </div>
-      <div>
-        <label for='pstText'>Text</label>
-        <textarea id='pstText' name='pstText'></textarea>
-      </div>
-      <div>
-        <button type='submit'>Post</button>
-      </div>
+    <form id="pstFrm">
+      <label for='pstTitle'>Title</label>
+      <input id='pstTitle' type='text' name='pstTitle' />
+      <label for='pstText'>Text</label>
+      <textarea id='pstText' name='pstText'></textarea>
+      <button id="pstBtn" type='submit'>Post</button>
     </form>
   </div>
+  <div class="verticalRule"></div>
 
   {{#if posts.length}}
-    <div>
+    <div class="minorColumn">
       <h3>Your Posts</h3>
-      {{#each posts as |post|}}
-        <div>
-          <h4><a href='api/posts/{{post.id}}'>{{post.title}}</a></h4>
-        </div>
-      {{/each}}
+        {{#each posts as |post|}}
+          <div>
+            <ul>
+              <li><a href='api/posts/{{post.id}}'>{{post.title}}</a></li>
+            </ul>
+          </div>
+        {{/each}}
     </div>
   {{/if}}
 </div>
 
 <script src='./js/post.js'></script>
+
+<script>
+  document.getElementById('pstFrm').addEventListener('submit', addPstHandler);
+</script>

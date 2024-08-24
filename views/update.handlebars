@@ -1,21 +1,23 @@
-<div>
-  <div>
-    <h3>Update a Post</h3>
-    <form id='updPstFrm'>
-      <div id='pstData' data-id='{{post.id}}'></div>
-      <div>
-        <label for='pstTitle'>Title</label>
-        <input id='pstTitle' type='text' name='pstTitle' value='{{post.title}}'/>
-      </div>
-      <div>
-        <label for='pstText'>Text</label>
-        <textarea id='pstText' name='pstText'>{{post.text}}</textarea>
-      </div>
-      <div>
-        <button id="savePstBtn">Save</button>
-      </div>
-    </form>
-  </div>
+<div id='updPstEl' data-id='{{post.id}}'>
+  <h3>Update a Post</h3>
+  <form id="updPstFrm">
+    <div id='updPstData' data-id='{{post.id}}'></div>
+    <div>
+      <label for='updPstTitle'>Title</label>
+      <input id='updPstTitle' type='text' name='updPstTitle' value='{{post.title}}'/>
+    </div>
+    <div>
+      <label for='updPstText'>Text</label>
+      <textarea id='updPstText' name='updPstText'>{{post.text}}</textarea>
+    </div>
+    <div>
+      <button id="updPstBtn">Post</button>
+    </div>
+  </form>
 </div>
 
 <script src='/js/update.js'></script>
+
+<script>
+  document.getElementById('updPstBtn').addEventListener('click', updPstHandler);
+</script>

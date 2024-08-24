@@ -1,9 +1,9 @@
-emailLogin = document.getElementById('loginEmail');
-passLogin = document.getElementById('loginPass');
+// const emailLogin = document.getElementById('loginEmail').value.trim();
+// const passLogin = document.getElementById('loginPass').value.trim();
 
-nameSignup = document.getElementById('signupName');
-emailSignup = document.getElementById('signupEmail');
-passSignup = document.getElementById('signupPass');
+// const nameSignup = document.getElementById('signupName').value.trim();
+// const emailSignup = document.getElementById('signupEmail').value.trim();
+// const passSignup = document.getElementById('signupPass').value.trim();
 
 //validate user
 const loginFrmHandler = async (event) => {
@@ -49,6 +49,3 @@ const signupFrmHandler = async (event) => {
     };
   };
 };
-
-document.getElementById('loginFrm').addEventListener('submit', loginFrmHandler);
-document.getElementById('signupFrm').addEventListener('submit', signupFrmHandler);
