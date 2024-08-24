@@ -1,10 +1,3 @@
-// const emailLogin = document.getElementById('loginEmail').value.trim();
-// const passLogin = document.getElementById('loginPass').value.trim();
-
-// const nameSignup = document.getElementById('signupName').value.trim();
-// const emailSignup = document.getElementById('signupEmail').value.trim();
-// const passSignup = document.getElementById('signupPass').value.trim();
-
 //validate user
 const loginFrmHandler = async (event) => {
   event.preventDefault();
@@ -34,7 +27,6 @@ const signupFrmHandler = async (event) => {
   const name = document.getElementById('signupName').value.trim();
   const email = document.getElementById('signupEmail').value.trim();
   const password = document.getElementById('signupPass').value.trim();
-
   if (name && email && password) {
     const response = await fetch('/api/users/signup', {
       method: 'POST',
@@ -44,7 +36,8 @@ const signupFrmHandler = async (event) => {
 
     if (response.ok) {
       document.location.replace('/home');
-    } else {
+    } 
+    else {
       alert(response.statusText);
     };
   };
