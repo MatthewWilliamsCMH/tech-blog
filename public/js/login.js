@@ -23,10 +23,10 @@ const loginFrmHandler = async (event) => {
 //sign-up new user
 const signupFrmHandler = async (event) => {
   event.preventDefault();
-
   const name = document.getElementById('signupName').value.trim();
   const email = document.getElementById('signupEmail').value.trim();
   const password = document.getElementById('signupPass').value.trim();
+
   if (name && email && password) {
     const response = await fetch('/api/users/signup', {
       method: 'POST',
@@ -38,7 +38,10 @@ const signupFrmHandler = async (event) => {
       document.location.replace('/home');
     } 
     else {
-      alert(response.statusText);
+      alert("User already exists. Please login.");
+      document.getElementById('signupName').value = "";
+      document.getElementById('signupEmail').value = "";
+      document.getElementById('signupPass').value = "";
     };
   };
 };
